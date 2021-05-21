@@ -6,7 +6,7 @@ namespace secure_privacy_test
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("project setup succeeded");
         }
     }
 }
