@@ -21,27 +21,27 @@ namespace secure_privacy_test
         private static bool IsGoodBinaryString(string binaryString)
         {
             char[] digits = binaryString.ToCharArray();
-            int count_ones = 0;
+            int counter = 0;
             foreach (var digit in digits)
             {
                 if (digit == '1')
                 {
-                    count_ones++;
+                    counter++;
                 }
                 else if (digit == '0')
                 {
-                    count_ones--;
+                    counter--;
                 }
                 else
                 {
                     return false;
                 }
-                if (count_ones < 0)
+                if (counter < 0)
                 {
                     return false;
                 }
             }
-            if (count_ones == 0)
+            if (counter == 0)
                 return true;
             return false;
         }
