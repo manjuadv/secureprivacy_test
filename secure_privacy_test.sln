@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tester", "Tester\Tester.csproj", "{3ED7C5C5-75C1-421B-9BD0-FC68D67827C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreApi", "StoreApi\StoreApi.csproj", "{07E523FB-E9B2-487F-A012-1C10F701DBCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1.Core", "Task1.Core\Task1.Core.csproj", "{A23C9100-CDA9-434E-8C29-0EA80C52AF96}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{3ED7C5C5-75C1-421B-9BD0-FC68D67827C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3ED7C5C5-75C1-421B-9BD0-FC68D67827C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3ED7C5C5-75C1-421B-9BD0-FC68D67827C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07E523FB-E9B2-487F-A012-1C10F701DBCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07E523FB-E9B2-487F-A012-1C10F701DBCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07E523FB-E9B2-487F-A012-1C10F701DBCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07E523FB-E9B2-487F-A012-1C10F701DBCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A23C9100-CDA9-434E-8C29-0EA80C52AF96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A23C9100-CDA9-434E-8C29-0EA80C52AF96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A23C9100-CDA9-434E-8C29-0EA80C52AF96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A23C9100-CDA9-434E-8C29-0EA80C52AF96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
