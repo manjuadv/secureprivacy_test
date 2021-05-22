@@ -35,7 +35,7 @@ namespace Tester
 
             dp.InsertBson(ndoc);
 
-            dp.InsertBsonSer(new Customer { Name = "Mathulacke", CreatedAt = DateTime.Now });
+            dp.InsertBsonSer(new Customer { FirstName = "Nuwan", LastName="Kumara", Address="48, Gall Road, Rathmalana", CreatedAt = DateTime.Now });
         }
     }
 }

@@ -11,10 +11,14 @@ namespace DataAccess.DomainObjs
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-        [BsonElement("name")]
-        public string Name { get; set; }
+        [BsonElement("firstname")]
+        public string FirstName { get; set; }
+        [BsonElement("lastname")]
+        public string LastName { get; set; }
         [BsonElement("created")]
         [BsonRepresentation(BsonType.DateTime)]
         public DateTime CreatedAt { get; set; }
+        [BsonElement("address")]
+        public string Address { get; set; }
     }
 }
