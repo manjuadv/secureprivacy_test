@@ -1,37 +1,44 @@
-﻿using System;
+﻿using DataAccess.DataServices;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Task1.Core.DBRepository;
 using Task1.Core.Models;
-using Task1.Core.Repositories;
 
 namespace DataAccess.Repositories
 {
     public class BookRepository : IBookRepository
     {
+        private readonly BookService _bookService;
+
+        public BookRepository(BookService bookService)
+        {
+            _bookService = bookService;
+        }
         public void Add(Book book)
         {
-            throw new NotImplementedException();
+            _bookService.Create(book);
         }
 
-        public void Edit(Book book)
+        public void Edit(string Id, Book book)
         {
-            throw new NotImplementedException();
+            _bookService.Update(Id, book);
         }
 
         public Book FindById(string Id)
         {
-            throw new NotImplementedException();
+            return _bookService.Get(Id);
         }
 
         public IEnumerable GetProducts()
         {
-            throw new NotImplementedException();
+            return _bookService.Get();
         }
 
         public void Remove(string Id)
         {
-            throw new NotImplementedException();
+            _bookService.Remove(Id);
         }
     }
 }
