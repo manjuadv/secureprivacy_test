@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using DataAccess.DataServices;
 using Microsoft.AspNetCore.Mvc;
+using Task1.Core.DBRepository;
 using Task1.Core.Models;
 
 namespace StoreApi.Controllers
@@ -10,9 +11,9 @@ namespace StoreApi.Controllers
     [ApiController]
     public class BooksController : ControllerBase
     {
-        private readonly BookService _bookService;
+        private IBookRepository _bookService;
 
-        public BooksController(BookService bookService)
+        public BooksController(IBookRepository bookService)
         {
             _bookService = bookService;
         }
@@ -24,7 +25,7 @@ namespace StoreApi.Controllers
         [HttpGet("{id:length(24)}", Name = "GetBook")]
         public ActionResult<Book> Get(string id)
         {
-            var book = _bookService.Get(id);
+            var book = _bookService.FindById(id);
 
             if (book == null)
             {
@@ -37,7 +38,7 @@ namespace StoreApi.Controllers
         [HttpPost]
         public ActionResult<Book> Create(Book book)
         {
-            _bookService.Create(book);
+            _bookService.Add(book);
 
             return CreatedAtRoute("GetBook", new { id = book.Id.ToString() }, book);
         }
@@ -45,14 +46,14 @@ namespace StoreApi.Controllers
         [HttpPut("{id:length(24)}")]
         public IActionResult Update(string id, Book bookIn)
         {
-            var book = _bookService.Get(id);
+            var book = _bookService.FindById(id);
 
             if (book == null)
             {
                 return NotFound();
             }
 
-            _bookService.Update(id, bookIn);
+            _bookService.Edit(id, bookIn);
 
             return NoContent();
         }
@@ -60,7 +61,7 @@ namespace StoreApi.Controllers
         [HttpDelete("{id:length(24)}")]
         public IActionResult Delete(string id)
         {
-            var book = _bookService.Get(id);
+            var book = _bookService.FindById(id);
 
             if (book == null)
             {

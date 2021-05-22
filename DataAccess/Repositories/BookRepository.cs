@@ -10,7 +10,7 @@ namespace DataAccess.Repositories
 {
     public class BookRepository : IBookRepository
     {
-        private readonly BookService _bookService;
+        private BookService _bookService;
 
         public BookRepository(BookService bookService)
         {
@@ -31,7 +31,7 @@ namespace DataAccess.Repositories
             return _bookService.Get(Id);
         }
 
-        public IEnumerable GetProducts()
+        public List<Book> Get()
         {
             return _bookService.Get();
         }

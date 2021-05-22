@@ -11,7 +11,7 @@ namespace Task1.Core.DBRepository
         void Add(Book book);
         void Edit(string Id, Book book);
         void Remove(string Id);
-        IEnumerable GetProducts(); 
+        List<Book> Get(); 
         Book FindById(string Id);
     }    
 }
