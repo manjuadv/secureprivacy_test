@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "secure_privacy_test", "secure_privacy_test\secure_privacy_test.csproj", "{8C212547-7E67-4B7C-97F9-0045055E003A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task2", "secure_privacy_test\Task2.csproj", "{8C212547-7E67-4B7C-97F9-0045055E003A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{8A3B896C-FC47-4F4C-821B-7BADB84C8E92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{8A3B896C-FC47-4F4C-821B-7BADB84C8E92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tester", "Tester\Tester.csproj", "{3ED7C5C5-75C1-421B-9BD0-FC68D67827C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tester", "Tester\Tester.csproj", "{3ED7C5C5-75C1-421B-9BD0-FC68D67827C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
