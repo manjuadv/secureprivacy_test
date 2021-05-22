@@ -9,5 +9,10 @@
 	  <PackageReference Include="MongoDB.Driver.Core" Version="2.12.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+    <ProjectReference Include="..\Task1.Core\Task1.Core.csproj" />
+  </ItemGroup>
+
 
 </Project>

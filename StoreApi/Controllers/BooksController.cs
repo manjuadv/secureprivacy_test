@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using DataAccess.DataServices;
 using Microsoft.AspNetCore.Mvc;
-using StoreApi.Services;
-using StoreApi.Models;
+using Task1.Core.Models;
 
 namespace StoreApi.Controllers
 {
