@@ -8,7 +8,16 @@ namespace Task2
     {
         public static bool IsGoodBinaryString(string binaryString)
         {
+            if (binaryString == null)
+                return false;
+
+            binaryString = binaryString.Trim();
+
+            if (binaryString == string.Empty)
+                return false;
+
             char[] digits = binaryString.ToCharArray();
+
             int counter = 0;
             foreach (var digit in digits)
             {
