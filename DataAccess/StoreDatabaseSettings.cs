@@ -6,7 +6,6 @@ namespace DataAccess
 {
     public class StoreDatabaseSettings : IStoreDatabaseSettings
     {
-        public string BooksCollectionName { get; set; }
         public string CustomersCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
@@ -14,7 +13,6 @@ namespace DataAccess
 
     public interface IStoreDatabaseSettings
     {
-        string BooksCollectionName { get; set; }
         public string CustomersCollectionName { get; set; }
         string ConnectionString { get; set; }
         string DatabaseName { get; set; }
