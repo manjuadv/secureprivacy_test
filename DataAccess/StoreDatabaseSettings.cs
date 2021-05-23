@@ -7,6 +7,8 @@ namespace DataAccess
     public class StoreDatabaseSettings : IStoreDatabaseSettings
     {
         public string CustomersCollectionName { get; set; }
+        public string OrdersCollectionName { get; set; }
+        public string ProductsCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }
@@ -14,6 +16,8 @@ namespace DataAccess
     public interface IStoreDatabaseSettings
     {
         public string CustomersCollectionName { get; set; }
+        public string OrdersCollectionName { get; set; }
+        public string ProductsCollectionName { get; set; }
         string ConnectionString { get; set; }
         string DatabaseName { get; set; }
     }

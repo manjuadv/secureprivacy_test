@@ -8,62 +8,62 @@ using Task1.StoreApi.Core.Models;
 
 namespace Task1.DataAccess.MongoDataServices
 {
-    public class CustomerService
+    public class OrderService
     {
-        private readonly IMongoCollection<Customer> _customerCollection;
+        private readonly IMongoCollection<Order> _orderCollection;
 
-        public CustomerService(IStoreDatabaseSettings settings)
+        public OrderService(IStoreDatabaseSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
 
-            _customerCollection = database.GetCollection<Customer>(settings.CustomersCollectionName);
+            _orderCollection = database.GetCollection<Order>(settings.OrdersCollectionName);
         }
-        public async Task<IEnumerable<Customer>> Get()
+        public async Task<IEnumerable<Order>> Get()
         {
-            var result = await _customerCollection.FindAsync(filter => true);
+            var result = await _orderCollection.FindAsync(filter => true);
 
             return result.ToList();
         }
-        public async Task<Customer> Get(string id)
+        public async Task<Order> Get(string id)
         {
-            var result = await _customerCollection.FindAsync(customer => customer.Id == id);
-            Customer customer = result.FirstOrDefault();
+            var result = await _orderCollection.FindAsync(order => order.Id == id);
+            Order order = result.FirstOrDefault();
 
-            return customer;
+            return order;
         }
-        public async Task Insert(Customer customer)
+        public async Task Insert(Order order)
         {
-            await _customerCollection.InsertOneAsync(customer);
+            await _orderCollection.InsertOneAsync(order);
         }
-        public async Task Update(string id, Customer customerIn)
+        public async Task Update(string id, Order orderIn)
         {
             if (await IsDocumentAvailable(id))
             {
-                var result = await _customerCollection.ReplaceOneAsync(customer => customer.Id == id, customerIn, new ReplaceOptions { IsUpsert = false });
+                var result = await _orderCollection.ReplaceOneAsync(order => order.Id == id, orderIn, new ReplaceOptions { IsUpsert = false });
                 if (result.ModifiedCount > 0)
                 {
                     // Do nothing, success
                 }
                 else
                 {
-                    throw new Exception("Customer update failed");
+                    throw new Exception("Order update failed");
                 }
             }
             else
             {
-                throw new InvalidOperationException("The customer does not exist");
+                throw new InvalidOperationException("The order does not exist");
             }
         }
         public async Task Remove(string id)
         {
             if (await IsDocumentAvailable(id))
             {
-                var result = await _customerCollection.DeleteOneAsync(customer => customer.Id == id);
+                var result = await _orderCollection.DeleteOneAsync(order => order.Id == id);
             }
             else
             {
-                throw new InvalidOperationException("The customer does not exist");
+                throw new InvalidOperationException("The order does not exist");
             }
         }
         private async Task<bool> IsDocumentAvailable(string id)
@@ -71,8 +71,8 @@ namespace Task1.DataAccess.MongoDataServices
             // Aggregate is used here to get the count with given id
             // Since aggregate is used, count is calculated in database level without loading the documents to memory
             
-            var countResult = await _customerCollection.Aggregate<Customer>()
-            .Match(customer => customer.Id == id)
+            var countResult = await _orderCollection.Aggregate<Order>()
+            .Match(order => order.Id == id)
             .Limit(1)
             .Count()
             .FirstOrDefaultAsync();

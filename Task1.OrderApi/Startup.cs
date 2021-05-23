@@ -36,8 +36,11 @@ namespace Task1.OrderApi
             services.AddSingleton<IStoreDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<StoreDatabaseSettings>>().Value);
 
+            // add dependency injection class to be solved
             services.AddSingleton<CustomerService>();
+            services.AddSingleton<OrderService>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
 
             services.AddControllers();
 
