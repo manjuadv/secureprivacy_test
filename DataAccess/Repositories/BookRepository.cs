@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Task1.Core.DBRepository;
 using Task1.Core.Models;
 
@@ -16,29 +17,60 @@ namespace DataAccess.Repositories
         {
             _bookService = bookService;
         }
-        public void Add(Book book)
+
+        public async Task<Book> Create(Book book)
         {
-            _bookService.Create(book);
+            Book insertedBook = await _bookService.Insert(book);
+
+            return insertedBook;
         }
 
-        public void Edit(string Id, Book book)
+        public async Task Delete(string Id)
         {
-            _bookService.Update(Id, book);
+            await _bookService.Remove(Id);
         }
 
-        public Book FindById(string Id)
+        public async Task<IEnumerable<Book>> Get()
         {
-            return _bookService.Get(Id);
+            IEnumerable<Book> books = await _bookService.Get();
+
+            return books;
         }
 
-        public List<Book> Get()
+        public async Task<Book> Get(string Id)
         {
-            return _bookService.Get();
+            Book book = await _bookService.Get(Id);
+
+            return book;
         }
 
-        public void Remove(string Id)
+        public async Task<bool> Update(string Id, Book book)
         {
-            _bookService.Remove(Id);
+            return await _bookService.Update(Id, book);
         }
+        /*public void Add(Book book)
+{
+   _bookService.Create(book);
+}
+
+public void Edit(string Id, Book book)
+{
+   _bookService.Update(Id, book);
+}
+
+public Book FindById(string Id)
+{
+   return _bookService.Get(Id);
+}
+
+public List<Book> Get()
+{
+   return _bookService.Get();
+}
+
+public void Remove(string Id)
+{
+   _bookService.Remove(Id);
+}*/
     }
 }

@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task2", "secure_privacy_test\Task2.csproj", "{8C212547-7E67-4B7C-97F9-0045055E003A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{8A3B896C-FC47-4F4C-821B-7BADB84C8E92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task1.DataAccess", "DataAccess\Task1.DataAccess.csproj", "{8A3B896C-FC47-4F4C-821B-7BADB84C8E92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreApi", "StoreApi\StoreApi.csproj", "{07E523FB-E9B2-487F-A012-1C10F701DBCD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task1.StoreApi", "StoreApi\Task1.StoreApi.csproj", "{07E523FB-E9B2-487F-A012-1C10F701DBCD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1.Core", "Task1.Core\Task1.Core.csproj", "{A23C9100-CDA9-434E-8C29-0EA80C52AF96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task1.StoreApi.Core", "Task1.Core\Task1.StoreApi.Core.csproj", "{A23C9100-CDA9-434E-8C29-0EA80C52AF96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

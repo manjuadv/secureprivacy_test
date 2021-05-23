@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Task1.Core\Task1.Core.csproj" />
+    <ProjectReference Include="..\Task1.Core\Task1.StoreApi.Core.csproj" />
   </ItemGroup>
 
 </Project>

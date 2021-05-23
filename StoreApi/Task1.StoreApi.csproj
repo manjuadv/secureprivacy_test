@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
-    <ProjectReference Include="..\Task1.Core\Task1.Core.csproj" />
+    <ProjectReference Include="..\DataAccess\Task1.DataAccess.csproj" />
+    <ProjectReference Include="..\Task1.Core\Task1.StoreApi.Core.csproj" />
   </ItemGroup>
 
 
