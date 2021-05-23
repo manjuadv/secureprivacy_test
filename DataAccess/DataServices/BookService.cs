@@ -1,7 +1,6 @@
 ﻿using MongoDB.Driver;
-using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Threading.Tasks;
 using Task1.Core.Models;
 
 namespace DataAccess.DataServices
@@ -19,25 +18,48 @@ namespace DataAccess.DataServices
             _books = database.GetCollection<Book>(settings.BooksCollectionName);
         }
 
-        public List<Book> Get() =>
+        /*public List<Book> Get() =>
             _books.Find(book => true).ToList();
-
-        public Book Get(string id) =>
-            _books.Find<Book>(book => book.Id == id).FirstOrDefault();
-
-        public Book Create(Book book)
+        */
+        public async Task<IEnumerable<Book>> Get()
         {
-            _books.InsertOne(book);
+            var r = await _books.FindAsync(filter => true);
+
+            return r.ToList();
+        }
+        /*public Book Get(string id) =>
+            _books.Find<Book>(book => book.Id == id).FirstOrDefault();
+        */
+        public async Task<Book> Get(string id)
+        {
+            var r = await _books.FindAsync(book => book.Id == id);
+            Book book = r.FirstOrDefault();
+
+            return book;
+        }
+        public async Task<Book> Insert(Book book)
+        {
+            await _books.InsertOneAsync(book);
+
             return book;
         }
 
-        public void Update(string id, Book bookIn) =>
+        /*public void Update(string id, Book bookIn) =>
             _books.ReplaceOne(book => book.Id == id, bookIn);
+        */
+        public async Task<bool> Update(string id, Book bookIn)
+        {
+            var result = await _books.ReplaceOneAsync(book => book.Id == id, bookIn);
 
-        public void Remove(Book bookIn) =>
-            _books.DeleteOne(book => book.Id == bookIn.Id);
+            return result.IsAcknowledged;
+        }
 
-        public void Remove(string id) =>
-            _books.DeleteOne(book => book.Id == id);
+        /*public void Remove(string id) =>
+            _books.DeleteOne(book => book.Id == id);*/
+
+        public async Task Remove(string id)
+        {
+            var result = await _books.DeleteOneAsync(book => book.Id == id);
+        }
     }
 }

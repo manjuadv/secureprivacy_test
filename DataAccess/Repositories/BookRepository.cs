@@ -1,37 +1,76 @@
-﻿using System;
+﻿using DataAccess.DataServices;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using Task1.Core.DBRepository;
 using Task1.Core.Models;
-using Task1.Core.Repositories;
 
 namespace DataAccess.Repositories
 {
     public class BookRepository : IBookRepository
     {
-        public void Add(Book book)
+        private BookService _bookService;
+
+        public BookRepository(BookService bookService)
         {
-            throw new NotImplementedException();
+            _bookService = bookService;
         }
 
-        public void Edit(Book book)
+        public async Task<Book> Create(Book book)
         {
-            throw new NotImplementedException();
+            Book insertedBook = await _bookService.Insert(book);
+
+            return insertedBook;
         }
 
-        public Book FindById(string Id)
+        public async Task Delete(string Id)
         {
-            throw new NotImplementedException();
+            await _bookService.Remove(Id);
         }
 
-        public IEnumerable GetProducts()
+        public async Task<IEnumerable<Book>> Get()
         {
-            throw new NotImplementedException();
+            IEnumerable<Book> books = await _bookService.Get();
+
+            return books;
         }
 
-        public void Remove(string Id)
+        public async Task<Book> Get(string Id)
         {
-            throw new NotImplementedException();
+            Book book = await _bookService.Get(Id);
+
+            return book;
         }
+
+        public async Task<bool> Update(string Id, Book book)
+        {
+            return await _bookService.Update(Id, book);
+        }
+        /*public void Add(Book book)
+{
+   _bookService.Create(book);
+}
+
+public void Edit(string Id, Book book)
+{
+   _bookService.Update(Id, book);
+}
+
+public Book FindById(string Id)
+{
+   return _bookService.Get(Id);
+}
+
+public List<Book> Get()
+{
+   return _bookService.Get();
+}
+
+public void Remove(string Id)
+{
+   _bookService.Remove(Id);
+}*/
     }
 }

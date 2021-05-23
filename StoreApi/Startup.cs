@@ -14,6 +14,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using DataAccess.DataServices;
+using Task1.Core.DBRepository;
+using DataAccess.Repositories;
 
 namespace StoreApi
 {
@@ -36,6 +38,7 @@ namespace StoreApi
                 sp.GetRequiredService<IOptions<BookstoreDatabaseSettings>>().Value);
 
             services.AddSingleton<BookService>();
+            services.AddScoped<IBookRepository, BookRepository>();
 
             services.AddControllers();
         }
