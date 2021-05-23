@@ -1,3 +1,4 @@
+using DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,17 +8,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Task1.Core;
-using DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DataAccess.DataServices;
 using Task1.Core.DBRepository;
-using DataAccess.Repositories;
+using Task1.DataAccess.MongoDataServices;
+using Task1.DataAccess.Repositories;
 
-namespace StoreApi
+namespace Task1.OrderApi
 {
     public class Startup
     {
@@ -31,21 +30,29 @@ namespace StoreApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.Configure<BookstoreDatabaseSettings>(
-         Configuration.GetSection(nameof(BookstoreDatabaseSettings)));
+            services.Configure<StoreDatabaseSettings>(
+            Configuration.GetSection(nameof(StoreDatabaseSettings)));
 
-            services.AddSingleton<IBookstoreDatabaseSettings>(sp =>
-                sp.GetRequiredService<IOptions<BookstoreDatabaseSettings>>().Value);
+            services.AddSingleton<IStoreDatabaseSettings>(sp =>
+                sp.GetRequiredService<IOptions<StoreDatabaseSettings>>().Value);
 
-            services.AddSingleton<BookService>();
-            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddSingleton<CustomerService>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
 
             services.AddControllers();
+
+            // Add swagger so that api can be explored with Swagger hosting page
+            services.AddSwaggerGen(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger();
+            app.UseSwaggerUI(c => 
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Store order api");
+            });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
