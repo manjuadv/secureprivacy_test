@@ -8,7 +8,14 @@ using Task1.StoreApi.Core.Models;
 
 namespace Task1.DataAccess.Repositories
 {
-    public class OrderRepository : IOrderRepository
+    public class OrderRepository : RepositoryBase<Order>, IOrderRepository
+    {
+        public OrderRepository(OrderService orderService) : base(orderService)
+        {
+
+        }
+    }
+    /*public class OrderRepository : IOrderRepository
     {
         private readonly OrderService _orderService;
 
@@ -40,5 +47,5 @@ namespace Task1.DataAccess.Repositories
         {
             await _orderService.Update(id, order);
         }
-    }
+    }*/
 }

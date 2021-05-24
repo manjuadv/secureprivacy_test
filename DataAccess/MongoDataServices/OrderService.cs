@@ -8,7 +8,14 @@ using Task1.StoreApi.Core.Models;
 
 namespace Task1.DataAccess.MongoDataServices
 {
-    public class OrderService
+    public class OrderService : MongoServiceBase<Order>
+    {
+        public OrderService(IStoreDatabaseSettings settings) : base(settings, settings.OrdersCollectionName)
+        {
+
+        }
+    }
+    /*public class OrderService
     {
         private readonly IMongoCollection<Order> _orderCollection;
 
@@ -81,5 +88,5 @@ namespace Task1.DataAccess.MongoDataServices
                 return true;
             return false;
         }
-    }
+    }*/
 }
