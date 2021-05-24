@@ -33,7 +33,6 @@ namespace Task1.OrderApi.Controllers
         public async Task<ActionResult<CustomerOrder>> Get(string id)
         {
             CustomerOrder order = await _orderRepository.GetCustomerOrder(id);
-
             //IEnumerable<Order> ord = await _orderRepository.GetCustomerOrders(order.CustomerId);
 
             if (order == null)
