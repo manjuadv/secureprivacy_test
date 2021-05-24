@@ -6,11 +6,8 @@ using System.Text;
 
 namespace Task1.StoreApi.Core.Models
 {
-    public class Product
+    public class Product : ModelBase
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
         public string Name { get; set; }
         public string Brand { get; set; }
         public string Model { get; set; }

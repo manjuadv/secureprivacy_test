@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using Task1.Core.DBRepository;
 using Task1.DataAccess.MongoDataServices;
 using Task1.DataAccess.Repositories;
+using Task1.StoreApi.Core.DBRepository;
 
 namespace Task1.OrderApi
 {
@@ -39,8 +40,10 @@ namespace Task1.OrderApi
             // add dependency injection class to be solved
             services.AddSingleton<CustomerService>();
             services.AddSingleton<OrderService>();
+            services.AddSingleton<ProductService>();
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
 
             services.AddControllers();
 
