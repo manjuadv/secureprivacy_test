@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task1.DataAccess", "DataAcc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task1.StoreApi.Core", "Task1.Core\Task1.StoreApi.Core.csproj", "{A23C9100-CDA9-434E-8C29-0EA80C52AF96}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1.OrderApi", "Task1.OrderApi\Task1.OrderApi.csproj", "{4C6C5496-8005-4737-8266-D85847DCA2E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Task1.OrderApi", "Task1.OrderApi\Task1.OrderApi.csproj", "{4C6C5496-8005-4737-8266-D85847DCA2E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreApiTest", "StoreApiTest\StoreApiTest.csproj", "{44CD3018-4B87-4EB3-B77D-D4AC036746B6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{4C6C5496-8005-4737-8266-D85847DCA2E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C6C5496-8005-4737-8266-D85847DCA2E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C6C5496-8005-4737-8266-D85847DCA2E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44CD3018-4B87-4EB3-B77D-D4AC036746B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44CD3018-4B87-4EB3-B77D-D4AC036746B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44CD3018-4B87-4EB3-B77D-D4AC036746B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44CD3018-4B87-4EB3-B77D-D4AC036746B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
