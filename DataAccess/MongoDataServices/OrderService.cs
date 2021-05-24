@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -14,5 +15,16 @@ namespace Task1.DataAccess.MongoDataServices
         {
 
         }
+
+        public async Task<IEnumerable<Order>> GetCustomerOrders(string customerId)
+        {
+            var result = await base.DocumentCollection.Aggregate<Order>()
+            .Match(element => element.CustomerId == customerId)
+            .SortByDescending(r=>r.CreatedAt)
+            .ToListAsync();
+
+            return result;
+        }
+        
     }
 }

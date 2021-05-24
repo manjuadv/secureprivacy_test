@@ -10,6 +10,8 @@ namespace Task1.Core.DBRepository
 {
     public interface IOrderRepository : IRepositoryBase<Order>
     {
+        Task<CustomerOrder> GetCustomerOrder(string orderId);
+        Task<IEnumerable<Order>> GetCustomerOrders(string customerId);
     }
     /*public interface IOrderRepository
     {

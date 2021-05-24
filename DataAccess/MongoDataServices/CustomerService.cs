@@ -1,4 +1,5 @@
 ﻿using DataAccess;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace Task1.DataAccess.MongoDataServices
     public class CustomerService
     {
         private readonly IMongoCollection<Customer> _customerCollection;
+        private readonly IMongoCollection<Order> _orderCollection;
 
         public CustomerService(IStoreDatabaseSettings settings)
         {
@@ -18,6 +20,7 @@ namespace Task1.DataAccess.MongoDataServices
             var database = client.GetDatabase(settings.DatabaseName);
 
             _customerCollection = database.GetCollection<Customer>(settings.CustomersCollectionName);
+            _orderCollection = database.GetCollection<Order>(settings.CustomersCollectionName);
         }
         public async Task<IEnumerable<Customer>> Get()
         {

@@ -82,5 +82,14 @@ namespace Task1.DataAccess.MongoDataServices
             else
                 return countResult.Count;
         }
+
+        protected IMongoCollection<T> DocumentCollection
+        {
+            get
+            {
+                return _documentCollection;
+            }
+        }
+
     }
 }

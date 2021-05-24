@@ -33,6 +33,7 @@ namespace Task1.OrderApi.Controllers
         public async Task<ActionResult<Customer>> Get(string id)
         {
             Customer customer = await _customerRepository.Get(id);
+            
             if (customer == null)
                 return NotFound();
             return customer;

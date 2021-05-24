@@ -30,9 +30,12 @@ namespace Task1.OrderApi.Controllers
 
         // GET api/<ValuesController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Order>> Get(string id)
+        public async Task<ActionResult<CustomerOrder>> Get(string id)
         {
-            Order order = await _orderRepository.Get(id);
+            CustomerOrder order = await _orderRepository.GetCustomerOrder(id);
+
+            //IEnumerable<Order> ord = await _orderRepository.GetCustomerOrders(order.CustomerId);
+
             if (order == null)
                 return NotFound();
             return order;

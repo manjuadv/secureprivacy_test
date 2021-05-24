@@ -9,35 +9,43 @@ namespace Task1.DataAccess.Repositories
 {
     public class RepositoryBase<T> where T : ModelBase
     {
-        private readonly MongoServiceBase<T> _productService;
+        private readonly MongoServiceBase<T> _mongoDbService;
 
         public RepositoryBase(MongoServiceBase<T> productService)
         {
-            _productService = productService;
+            _mongoDbService = productService;
         }
-        public async Task Create(T product)
+        public virtual async Task Create(T product)
         {
-            await _productService.Insert(product);
-        }
-
-        public async Task Delete(string id)
-        {
-            await _productService.Remove(id);
+            await _mongoDbService.Insert(product);
         }
 
-        public async Task<IEnumerable<T>> Get()
+        public virtual async Task Delete(string id)
         {
-            return await _productService.Get();
+            await _mongoDbService.Remove(id);
         }
 
-        public async Task<T> Get(string id)
+        public virtual async Task<IEnumerable<T>> Get()
         {
-            return await _productService.Get(id);
+            return await _mongoDbService.Get();
         }
 
-        public async Task Update(string id, T product)
+        public virtual async Task<T> Get(string id)
         {
-            await _productService.Update(id, product);
+            return await _mongoDbService.Get(id);
+        }
+
+        public virtual async Task Update(string id, T product)
+        {
+            await _mongoDbService.Update(id, product);
+        }
+
+        public MongoServiceBase<T> MongoDbService
+        {
+            get
+            {
+                return _mongoDbService;
+            }
         }
     }
 }
